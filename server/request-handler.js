@@ -12,7 +12,7 @@ this file and include it in basic-server.js so that it actually works.
 
 **************************************************************/
 var storage = {};
-storage.results = [];
+storage.results = [{username: 'Jono', message: 'Do my bidding!'}];
 
 
 var requestHandler = function(request, response) {
@@ -46,9 +46,6 @@ var requestHandler = function(request, response) {
       storage.results.push(JSON.parse(value))
     })
   }
-
-  console.log("new thing")
-
 
   // See the note below about CORS headers.
   var headers = defaultCorsHeaders;
