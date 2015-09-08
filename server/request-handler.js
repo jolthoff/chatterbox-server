@@ -33,7 +33,6 @@ var requestHandler = function(request, response) {
   
 
 
-//// COMMENTED OUT /////
   console.log("Serving request type " + request.method + " for url " + request.url);
 
   // The outgoing status.
@@ -42,12 +41,17 @@ var requestHandler = function(request, response) {
   
   if (request.method === "POST") {
     statusCode = 201
-    storage.results.push(request._postData)
+    // storage.results.push(request._postData)
+    request.addListener("data", function(value) {
+      storage.results.push(JSON.parse(value))
+    })
   }
 
+  if (request.url !== '/classes/messages') {
+    statusCode = 404
+  }
 
-
-  
+  console.log("new thing")
 
 
   // See the note below about CORS headers.
