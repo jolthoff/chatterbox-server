@@ -47,10 +47,6 @@ var requestHandler = function(request, response) {
     })
   }
 
-  if (request.url !== '/classes/messages') {
-    statusCode = 404
-  }
-
   console.log("new thing")
 
 
